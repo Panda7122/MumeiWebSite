@@ -1,3 +1,5 @@
+// const { text } = require('express');
+
 screenWidth = document.body.clientWidth
 screenHeight = document.body.clientHeight
 console.log(screenWidth, screenHeight);
@@ -11,13 +13,28 @@ const gameStart = {
     },
     create: function(){
         // init
-        
+        this.textSize = 40;
+        this.textType = 0
         this.bgStart = this.add.tileSprite(screenWidth/2, screenHeight/2, screenWidth, screenHeight, 'bgStart');
-        this.textStart = this.add.text(screenWidth/2-5*20, screenHeight/2-20, 'Mumei Daisuki', {font: "40px Arial",
-            color: "#ffffff"});
+        this.textStart = this.add.text(screenWidth/2, screenHeight/2, 'Mumei Daisuki', {font: "40px Arial",
+            color: "#ffffff"}).setOrigin(0.5, 0.5);
     },
     update: function(){
         // update with 60fps
+        this.textStart.setFontSize(this.textSize);
+        if(this.textType==0){
+            if(this.textSize<60){
+                ++this.textSize;
+            }else{
+                this.textType = 1;
+            }
+        }else{
+            if(this.textSize>20){
+                --this.textSize;
+            }else{
+                this.textType = 0;
+            }
+        }
     }
 }
 const gameConfig = {
