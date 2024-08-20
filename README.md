@@ -3,6 +3,8 @@
 ## how to use?
 
 before that, make sure you're already downloaded nodejs
+download it with git or zip
+unzip it if you download it like zip
 
 1. open terminal
 2. move to this floder
